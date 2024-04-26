@@ -385,7 +385,7 @@ header, section, #new-catalog{
 
 #banner{
     background-image: url(images/banner.png);
-    background-size: 160vw;
+    background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center;
     border: none;
@@ -394,6 +394,7 @@ header, section, #new-catalog{
     margin-right: 0;
     height: calc(100vw / 19 * 10);
     width: 100vw;
+    max-height: 655px;
     /* overflow-x: hidden; */
 }
 
