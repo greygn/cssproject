@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art-Rings</title>
+    <title>Document</title>
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="menu-full">
-        <button class="menu-close"></button>
+    <div id="loader-cont">
+        <div id="loader"></div>
+    </div>
+    <div id="menu-full">
+        <button id="menu-close" class="icon"></button>
         <div id="menu-container">
-            <div id="menu-logo"></div>
+            <div id="menu-logo" class="icon"></div>
             <div id="menu-text-container">
                 <div>СТУДИЯ</div>
                 <div>О НАС</div>
@@ -42,43 +45,43 @@
                 <div>Как выбрать обручальные кольца</div>
                 <div>О помолвочных кольцах</div>
                 <div class="header-1icon">
-                    <img src="icons/social_fb.svg" height="35px">
-                    <img src="icons/social_vk.svg" height="35px">
-                    <img src="icons/social_wa.svg" height="35px">
-                    <img src="icons/social_ig.svg" height="35px">
-                    <img src="icons/social_tg.svg" height="35px">
+                    <img src="icons/social_fb.svg" height="35px" class="icon">
+                    <img src="icons/social_vk.svg" height="35px" class="icon">
+                    <img src="icons/social_wa.svg" height="35px" class="icon">
+                    <img src="icons/social_ig.svg" height="35px" class="icon">
+                    <img src="icons/social_tg.svg" height="35px" class="icon">
                 </div>
             </div>
             <div class="footer-section">
                 <div class="footer-section-name">КОНТАКТЫ</div>
                 <div id="footer-section-1">
-                    <div class="footer-tel">+7(977) 841 23 40<br/>+7(499) 940 87 77<br/><br/>info@art-rings.ru</div>
+                    <div class="footer-tel">+7(977) 841 23 40<br/>+7(499) 940 87 77<br/>info@art-rings.ru</div>
                     <div class="footer-section-text">Москва, Большой Кисловский<br/>переулок, 5-7с1<br/>пн-пт 11:00-20:00<br/>сб, вс 11:00-17:00</div>
                 </div>
                 <div class="footer-section-text"></div>
             </div>
         </div>
     </div>
-    <div class="header-info">
+    <div id="header-info">
         <div class="header-info-adress">
             <div class="info-block">
-                <img src="icons/header_map_pin.svg" height="20px">
+                <img src="icons/header_map_pin.svg" height="20px" class="icon">
                 <div class="info-text">Москва, Большой Кисловский переулок, 5-7с1</div>
             </div>
             <div class="info-block">
-                <img src="icons/header_mail.svg" height="20px">
+                <img src="icons/header_mail.svg" height="20px" class="icon">
                 <div class="info-text">info@art-rings.ru</div>
             </div>
         </div>
         <div class="header-1icon">
-            <img src="icons/header_clock.svg" height="20px">
+            <img src="icons/header_clock.svg" height="20px" class="icon">
             <div class="header-info-adress">
                 <div class="info-block"><div class="info-text">пн-пт 11:00-20:00</div></div>
                 <div class="info-block"><div class="info-text">сб, вс 11:00-17:00</div></div>
             </div>
         </div>
         <div class="header-1icon">
-            <img src="icons/header_phone.svg" height="20px">
+            <img src="icons/header_phone.svg" height="20px" class="icon">
             <div class="header-info-adress">
                 <div class="info-block">
                     <div class="info-text">+7 (499) 940-87-77</div>
@@ -89,15 +92,21 @@
             </div>
         </div>
         <div class="socials">
-            <img src="icons/social_fb.svg" height="35px">
-            <img src="icons/social_vk.svg" height="35px">
-            <img src="icons/social_wa.svg" height="35px">
-            <img src="icons/social_ig.svg" height="35px">
-            <img src="icons/social_tg.svg" height="35px">
+            <img src="icons/social_fb.svg" height="35px" class="icon">
+            <img src="icons/social_vk.svg" height="35px" class="icon">
+            <img src="icons/social_wa.svg" height="35px" class="icon">
+            <img src="icons/social_ig.svg" height="35px" class="icon">
+            <img src="icons/social_tg.svg" height="35px" class="icon">
         </div>
         <button class ="mobile-search"></button>
     </div>
-    <div class="mobile-search-modal">
+    <div id="accessibilty-menu">
+        <button id="hide-pics" class="accessibilty-button">Отключить картинки</button>
+        <button id="dark-theme" class="accessibilty-button">Тёмная тема</button>
+        <button id="big-font" class="accessibilty-button">Крупный шрифт</button>
+        <button id="reset" class="accessibilty-button">Сбросить стиль</button>
+    </div>
+    <div id="mobile-search-modal">
         <div class="mobile-search-modal-window">
             <input id="mobile-search-modal-field" type="text" name="search" placeholder="Введите артикул" />
             <input id="mobile-search-modal-button" type="submit" value="НАЙТИ" />
@@ -125,8 +134,8 @@
         </div>
         <div id="header-bottom-section">
             <div id="header-top-section-buttons2">
-                <img src="images/header_logo.svg" height="63px"/>
-                <button class ="header-top-section-menu"></button>
+                <img src="images/header_logo.svg" height="63px" class="icon"/>
+                <button id ="header-top-section-menu"></button>
             </div>
             <div id="header-text-logo-mobile">
                 <div id="header-text-logo-big-mobile">ART-RINGS</div>
@@ -139,16 +148,16 @@
                 <div>НА ЗАКАЗ</div>
             </div>
             <div id="header-top-section-buttons1">
-                <div id ="header-top-section-cart"></div>
-                <div id ="header-top-section-heart"></div>
+                <div id ="header-top-section-cart" class="icon"></div>
+                <div id ="header-top-section-heart" class="icon"></div>
             </div>
         </div>
         <div id="section-slogan">Oсобенные обручальные кольца</div>
     </header>
-    <img id="banner"/>
-    <img id="slider-ind1" src="icons/slider_ind.svg">
+    <img id="banner" class="picture"/>
+    <img id="slider-ind1" src="icons/slider_ind.svg" class="picture">
     <div id="promo-section">
-        <div id="promo-graphics">
+        <div id="promo-graphics" class="picture">
             <div class="promo-graphics-line"></div>
             <div id="promo-graphics-diamond"></div>
             <div class="promo-graphics-line"></div>
@@ -175,22 +184,22 @@
     <div id="new-catalog">
         <div id="new-catalog-name">НОВИНКИ</div>
         <div id="new-catalog-section">
-            <img id="new-catalog-arrow-left" src="icons/new_arrow_left.svg" height: 25px width: 13px/>
+            <img id="new-catalog-arrow-left" src="icons/new_arrow_left.svg" height: 25px width: 13px class="icon"/>
             <div id="new-catalog-container">
                 <div class="new-catalog-card" id="card1">
                     <div class="new-catalog-card-line">
                         <div class="new-catalog-card-article">Арт. 019</div>
-                        <img class="new-catalog-card-rating" height="15px"; width="85px" src="icons/rating.svg"></img>
+                        <img class="new-catalog-card-rating" height="15px"; width="85px" src="icons/rating.svg" class="icon"></img>
                     </div>
                     <div class="new-catalog-card-line">
-                        <img class="new-catalog-card-heart" height="25px", width="25px" src="icons/card_heart.svg"></img>
+                        <img class="new-catalog-card-heart" height="25px", width="25px" src="icons/card_heart.svg" class="icon"></img>
                         <div class="new-catalog-card-price">59 600 ₽</div>
                     </div>
                 </div>
                 <div class="new-catalog-card" id="card2">
                     <div class="new-catalog-card-line">
                         <div class="new-catalog-card-article">Арт. 019</div>
-                        <img class="new-catalog-card-rating" height="15px"; width="85px" src="icons/rating.svg"></img>
+                        <img class="new-catalog-card-rating" height="15px"; width="85px" src="icons/rating.svg" class="icon"></img>
                     </div>
                     <div class="new-catalog-card-line">
                         <img class="new-catalog-card-heart" height="25px", width="25px" src="icons/card_heart.svg"></img>
@@ -238,20 +247,20 @@
                     </div>
                 </div>
             </div>
-            <img id="new-catalog-arrow-left" src="icons/new_arrow_right.svg" height="25px">
+            <img id="new-catalog-arrow-left" src="icons/new_arrow_right.svg" height="25px" class="icon">
         </div>
-        <div id="new-catalog-scroll">
+        <div id="new-catalog-scroll" class="icon">
             <div id="new-catalog-scroll-line"></div>
         </div>
         <div id="new-catalog-more">
             <div id="new-catalog-more-text">ПОКАЗАТЬ ЕЩЁ</div>
-            <div id="new-catalog-more-icon"></div>
+            <div id="new-catalog-more-icon" class="icon"></div>
         </div>
     </div>
     <footer>
         <div id="footer-all-sections">
             <div class="footer-section">
-                <img src="images/footer_logo.svg" width="140px">
+                <img src="images/footer_logo.svg" width="140px" class="icon">
                 <div id="footer-privacy">Политика <br/>конфеденциальности</div>
                 <div id="footer-inn">ИНН 672208547140</div>
             </div>
@@ -292,11 +301,11 @@
                 <div id="footer-inn">ИНН 672208547140</div>
             </div>
             <div id="footer-socials">
-                <img src="icons/social_fb.svg" height="30px">
-                <img src="icons/social_vk.svg" height="30px">
-                <img src="icons/social_wa.svg" height="30px">
-                <img src="icons/social_ig.svg" height="30px">
-                <img src="icons/social_tg.svg" height="30px">
+                <img src="icons/social_fb.svg" height="30px" class="icon">
+                <img src="icons/social_vk.svg" height="30px" class="icon">
+                <img src="icons/social_wa.svg" height="30px" class="icon">
+                <img src="icons/social_ig.svg" height="30px" class="icon">
+                <img src="icons/social_tg.svg" height="30px" class="icon">
             </div>
         </div>
     </footer>
