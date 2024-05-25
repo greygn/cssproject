@@ -181,16 +181,23 @@ let arr3 = document.getElementsByClassName('new-catalog-card-article');
 let arr4 = document.getElementsByClassName('new-catalog-card-price');
 let arr5 = document.getElementsByClassName('info-text');
 let arr6 = document.getElementById('header-top-section');
-let arr7 = document.get
-// let texts = [document.getElementById('accessibilty-menu'), document.getElementById('menu-full'), document.getElementById('mobile-search-modal'), 
-// document.querySelector('header'), document.getElementById('promo-text'), document.getElementById('new-catalog-name'), ...arr3, ...arr4, ...arr5, document.querySelector('footer')
-// ];
-let texts = document.getElementsByTagName('div');
+let catalogCardText = Array.from(document.getElementsByClassName('catalog-card-text'));
+let text = document.getElementsByTagName('div');
+let texts = Array.from(text);
+texts = texts.filter(item => !catalogCardText.includes(item));
+let pictures1 = Array.from(pictures);
+texts = texts.filter(item => !pictures1.includes(item));
+let icons1 = Array.from(icons);
+texts = texts.filter(item => !icons1.includes(item));
+let catalog1 = [document.getElementById('catalog'), document.getElementById('catalog-section'), document.getElementById('catalog-text')].filter(Boolean);
+texts = texts.filter(item => !catalog1.includes(item));
+
 const textsCopy = Array.from(texts, text => {
         return {
         element: text,
         originalColor: getComputedStyle(text).color,
-        originalCssText: text.style.cssText
+        originalCssText: text.style.cssText,
+        originalBackground: text.style.backgroundColor,
     };
 });
 
@@ -204,6 +211,7 @@ darkTheme.addEventListener('click', function(){
     }
     for (let n = 0; n < texts.length; n++){
         texts[n].style.color = 'white';
+        texts[n].style.backgroundColor = '#121212'
     }
     for (let n = 0; n<pictures.length; n++){
         pictures[n].style.filter = 'invert(1) contrast(0.8) hue-rotate(180deg)';
