@@ -900,7 +900,7 @@ footer{
     }
 
     .catalog-card-text{
-        width: 330px;
+        width: 215px;
     }
 
     #new-catalog{
@@ -1044,7 +1044,9 @@ footer{
     }
 
     .menu-bottom-container{
-        height: 185px;
+        min-height: 185px;
+        height: fit-content;
+        margin-bottom: 15px;
     }
 
     .menu-bottom-container:nth-child(2n+1){
