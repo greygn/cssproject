@@ -33,7 +33,7 @@ setTimeout(() => {
     setTimeout(() => {
         loadBg.style.display = 'none';
     }, 500);
-}, 1500);
+}, 500);
 
 const openModal = () => {
     modalEl.style.visibility = `visible`;
