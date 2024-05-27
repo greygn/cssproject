@@ -8,6 +8,10 @@ function updateHeight() {
     document.querySelector('#menu-full').style.height = `${window.innerHeight}px`;
 }
 
+// localStorage.setItem("isPicsDisabled", "0");
+// localStorage.setItem("isDarkTheme", "0");
+// localStorage.setItem("isBigFont", "0");
+
 window.addEventListener('resize', updateHeight);
 window.addEventListener('orientationchange', updateHeight);
 
@@ -110,6 +114,49 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', checkVisibility);
 
     checkVisibility();
+
+    if (localStorage.getItem("isPicsDisabled") === "1") {
+        for (let n = 0; n<pictures.length; n++){
+        picturesCopy[n].originalDisplay  = getComputedStyle(pictures[n]).display;
+        pictures[n].style.display = 'none';
+    }
+    for (let n = 0; n < divWithBackground.length; n++){
+        divWithBackground[n].style.background = 'transparent';
+        divWithBackground[n].style.height = `120px`;
+        divWithBackground[n].children[0].style.color = 'white';
+        divWithBackground[n].children[0].style.border = 'white 1px solid';
+    }
+    catalogSection.style.gridTemplateRows = 'repeat(2, 100px)'
+    }
+
+    if (localStorage.getItem("isDarkTheme") === "1"){
+        for (let n = 0; n < icons.length; n++){
+            icons[n].style.filter = 'brightness(10) contrast(0.8)';
+        }
+        for (let n = 0; n < divs.length; n++){
+            divs[n].style.backgroundColor = '#121212';
+        }
+        for (let n = 0; n < texts.length; n++){
+            texts[n].style.color = 'white';
+            texts[n].style.backgroundColor = '#121212'
+        }
+        for (let n = 0; n<pictures.length; n++){
+            pictures[n].style.filter = 'invert(1) contrast(0.8) hue-rotate(180deg)';
+        }
+        for (let n = 0; n<buttons.length; n++){
+            buttons[n].style.backgroundColor = '#121212';
+            buttons[n].style.setProperty('color', '#fff', 'important');
+        }
+    }
+
+    if (localStorage.getItem("isBigFont") === "1"){
+        for (let n = 0; n < texts.length; n++) {
+            const currentFontSize = parseFloat(getComputedStyle(texts[n]).fontSize);
+            if (currentFontSize <= 19) {
+                texts[n].style.fontSize = '19px';
+            }
+        }
+    }
 });
 
 
@@ -131,17 +178,35 @@ const catalogSectionCopy = {
     };
 
 disablePics.addEventListener(`click`, function(){
-    for (let n = 0; n<pictures.length; n++){
-        picturesCopy[n].originalDisplay  = getComputedStyle(pictures[n]).display;
-        pictures[n].style.display = 'none';
+    if (localStorage.getItem("isPicsDisabled") === "1"){
+        localStorage.setItem("isPicsDisabled", "0");
+        for (let n = 0; n<pictures.length; n++){
+            pictures[n].style.display = picturesCopy[n].originalDisplay;
+            pictures[n].style.filter = picturesCopy[n].originalFilter;
+        }
+        for (let n = 0; n < divWithBackground.length; n++){
+            divWithBackground[n].style.background = divWithBackgroundCopy[n].originalBackground;
+            divWithBackground[n].style.height = divWithBackgroundCopy[n].originalHeight;
+            divWithBackground[n].children[0].style.color = divWithBackgroundCopy[n].originalColor;
+            divWithBackground[n].children[0].style.border = divWithBackgroundCopy[n].originalBorder;
+        }
+        document.getElementById('catalog-section').style.gridTemplateRows = catalogSectionCopy.originalGrid;
     }
-    for (let n = 0; n < divWithBackground.length; n++){
-        divWithBackground[n].style.background = 'transparent';
-        divWithBackground[n].style.height = `120px`;
-        divWithBackground[n].children[0].style.color = 'white';
-        divWithBackground[n].children[0].style.border = 'white 1px solid';
+    else{
+        localStorage.setItem("isPicsDisabled", "1");
+        for (let n = 0; n<pictures.length; n++){
+            picturesCopy[n].originalDisplay  = getComputedStyle(pictures[n]).display;
+            pictures[n].style.display = 'none';
+        }
+        for (let n = 0; n < divWithBackground.length; n++){
+            divWithBackground[n].style.background = 'transparent';
+            divWithBackground[n].style.height = `120px`;
+            divWithBackground[n].children[0].style.color = 'white';
+            divWithBackground[n].children[0].style.border = 'white 1px solid';
+        }
+        catalogSection.style.gridTemplateRows = 'repeat(2, 100px)'
     }
-    catalogSection.style.gridTemplateRows = 'repeat(2, 100px)'
+    
 })
 
 const darkTheme = document.getElementById(`dark-theme`);
@@ -198,42 +263,83 @@ const textsCopy = Array.from(texts, text => {
         originalColor: getComputedStyle(text).color,
         originalCssText: text.style.cssText,
         originalBackground: text.style.backgroundColor,
+        originalFontSize: getComputedStyle(text).fontSize
     };
 });
 
 
 darkTheme.addEventListener('click', function(){
-    for (let n = 0; n < icons.length; n++){
-        icons[n].style.filter = 'brightness(10) contrast(0.8)';
+    if (localStorage.getItem("isDarkTheme") === "1"){
+        localStorage.setItem("isDarkTheme", "0");
+        for (let n = 0; n < icons.length; n++){
+            icons[n].style.filter = iconsCopy[n].originalFilter;
+        }
+        for (let n = 0; n < divs.length; n++){
+            divs[n].style.backgroundColor = divsCopy[n].originalBackground;
+        }
+        for (let n = 0; n < texts.length; n++){
+            if (textsCopy[n].element !== document.getElementById('loader-cont')){
+                texts[n].style.color = textsCopy[n].originalColor;
+                let fsize = texts[n].style.fontSize;
+                texts[n].style.cssText = textsCopy[n].originalCssText;
+                texts[n].style.fontSize = fsize;
+            }
+        }
+        for (let n = 0; n<buttons.length; n++){
+            buttons[n].style.backgroundColor = buttonsCopy[n].originalBackground;
+            buttons[n].style.color = buttonsCopy[n].originalColor;
+        }
+        for (let n = 0; n<pictures.length; n++){
+            pictures[n].style.filter = picturesCopy[n].originalFilter;
+        }
     }
-    for (let n = 0; n < divs.length; n++){
-        divs[n].style.backgroundColor = '#121212';
+    else{
+        localStorage.setItem("isDarkTheme", "1");
+        for (let n = 0; n < icons.length; n++){
+            icons[n].style.filter = 'brightness(10) contrast(0.8)';
+        }
+        for (let n = 0; n < divs.length; n++){
+            divs[n].style.backgroundColor = '#121212';
+        }
+        for (let n = 0; n < texts.length; n++){
+            texts[n].style.color = 'white';
+            texts[n].style.backgroundColor = '#121212'
+        }
+        for (let n = 0; n<pictures.length; n++){
+            pictures[n].style.filter = 'invert(1) contrast(0.8) hue-rotate(180deg)';
+        }
+        for (let n = 0; n<buttons.length; n++){
+            buttons[n].style.backgroundColor = '#121212';
+            buttons[n].style.setProperty('color', '#fff', 'important');
+        }
     }
-    for (let n = 0; n < texts.length; n++){
-        texts[n].style.color = 'white';
-        texts[n].style.backgroundColor = '#121212'
-    }
-    for (let n = 0; n<pictures.length; n++){
-        pictures[n].style.filter = 'invert(1) contrast(0.8) hue-rotate(180deg)';
-    }
-    for (let n = 0; n<buttons.length; n++){
-        buttons[n].style.backgroundColor = '#121212';
-        buttons[n].style.setProperty('color', '#fff', 'important');
-    }
+    
 })
 
 let bigFont = document.getElementById('big-font');
 bigFont.addEventListener('click', function() {
-    for (let n = 0; n < texts.length; n++) {
-        const currentFontSize = parseFloat(getComputedStyle(texts[n]).fontSize);
-        if (currentFontSize <= 19) {
-            texts[n].style.fontSize = '19px';
+    if (localStorage.getItem("isBigFont") === "1"){
+        localStorage.setItem("isBigFont", "0");
+        for (let n = 0; n < texts.length; n++) {
+            texts[n].style.fontSize = textsCopy[n].originalFontSize;
+        }
+    }
+    else{
+        localStorage.setItem("isBigFont", "1")
+        for (let n = 0; n < texts.length; n++) {
+            const currentFontSize = parseFloat(getComputedStyle(texts[n]).fontSize);
+            if (currentFontSize <= 19) {
+                texts[n].style.fontSize = '19px';
+            }
         }
     }
 });
 
 let reset = document.getElementById('reset');
 reset.addEventListener('click', function(){
+    localStorage.setItem("isPicsDisabled", "0");
+    localStorage.setItem("isDarkTheme", "0");
+    localStorage.setItem("isBigFont", "0");
     for (let n = 0; n<pictures.length; n++){
         pictures[n].style.display = picturesCopy[n].originalDisplay;
         pictures[n].style.filter = picturesCopy[n].originalFilter;
