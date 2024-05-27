@@ -86,6 +86,50 @@ const picturesCopy = Array.from(pictures, picture => {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    if (localStorage.getItem("isDarkTheme") === "1"){
+        for (let n = 0; n < icons.length; n++){
+            icons[n].style.filter = 'brightness(10) contrast(0.8)';
+        }
+        for (let n = 0; n < divs.length; n++){
+            divs[n].style.backgroundColor = '#121212';
+        }
+        for (let n = 0; n < texts.length; n++){
+            texts[n].style.color = 'white';
+            texts[n].style.backgroundColor = '#121212'
+        }
+        for (let n = 0; n<pictures.length; n++){
+            pictures[n].style.filter = 'invert(1) contrast(0.8) hue-rotate(180deg)';
+        }
+        for (let n = 0; n<buttons.length; n++){
+            buttons[n].style.backgroundColor = '#121212';
+            buttons[n].style.setProperty('color', '#fff', 'important');
+        }
+    }
+
+    if (localStorage.getItem("isPicsDisabled") === "1") {
+        for (let n = 0; n<pictures.length; n++){
+        picturesCopy[n].originalDisplay  = getComputedStyle(pictures[n]).display;
+        pictures[n].style.display = 'none';
+    }
+    for (let n = 0; n < divWithBackground.length; n++){
+        divWithBackground[n].style.background = 'transparent';
+        divWithBackground[n].style.height = `120px`;
+        divWithBackground[n].children[0].style.color = 'white';
+        divWithBackground[n].children[0].style.border = 'white 1px solid';
+    }
+    catalogSection.style.gridTemplateRows = 'repeat(2, 100px)'
+    }
+
+    if (localStorage.getItem("isBigFont") === "1"){
+        for (let n = 0; n < texts.length; n++) {
+            const currentFontSize = parseFloat(getComputedStyle(texts[n]).fontSize);
+            if (currentFontSize <= 19) {
+                texts[n].style.fontSize = '19px';
+            }
+        }
+    }
+
     const elements = [...divWithBackground];
  
     elements.forEach(element => {
@@ -115,48 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     checkVisibility();
 
-    if (localStorage.getItem("isPicsDisabled") === "1") {
-        for (let n = 0; n<pictures.length; n++){
-        picturesCopy[n].originalDisplay  = getComputedStyle(pictures[n]).display;
-        pictures[n].style.display = 'none';
-    }
-    for (let n = 0; n < divWithBackground.length; n++){
-        divWithBackground[n].style.background = 'transparent';
-        divWithBackground[n].style.height = `120px`;
-        divWithBackground[n].children[0].style.color = 'white';
-        divWithBackground[n].children[0].style.border = 'white 1px solid';
-    }
-    catalogSection.style.gridTemplateRows = 'repeat(2, 100px)'
-    }
-
-    if (localStorage.getItem("isDarkTheme") === "1"){
-        for (let n = 0; n < icons.length; n++){
-            icons[n].style.filter = 'brightness(10) contrast(0.8)';
-        }
-        for (let n = 0; n < divs.length; n++){
-            divs[n].style.backgroundColor = '#121212';
-        }
-        for (let n = 0; n < texts.length; n++){
-            texts[n].style.color = 'white';
-            texts[n].style.backgroundColor = '#121212'
-        }
-        for (let n = 0; n<pictures.length; n++){
-            pictures[n].style.filter = 'invert(1) contrast(0.8) hue-rotate(180deg)';
-        }
-        for (let n = 0; n<buttons.length; n++){
-            buttons[n].style.backgroundColor = '#121212';
-            buttons[n].style.setProperty('color', '#fff', 'important');
-        }
-    }
-
-    if (localStorage.getItem("isBigFont") === "1"){
-        for (let n = 0; n < texts.length; n++) {
-            const currentFontSize = parseFloat(getComputedStyle(texts[n]).fontSize);
-            if (currentFontSize <= 19) {
-                texts[n].style.fontSize = '19px';
-            }
-        }
-    }
+    
 });
 
 
@@ -254,7 +257,7 @@ let pictures1 = Array.from(pictures);
 texts = texts.filter(item => !pictures1.includes(item));
 let icons1 = Array.from(icons);
 texts = texts.filter(item => !icons1.includes(item));
-let catalog1 = [document.getElementById('catalog'), document.getElementById('catalog-section'), document.getElementById('catalog-text')].filter(Boolean);
+let catalog1 = [document.getElementById('catalog'), document.getElementById('loader-cont'), document.getElementById('loader'), document.getElementById('catalog-section'), document.getElementById('catalog-text')].filter(Boolean);
 texts = texts.filter(item => !catalog1.includes(item));
 
 const textsCopy = Array.from(texts, text => {
