@@ -185,7 +185,6 @@ disablePics.addEventListener(`click`, function(){
         localStorage.setItem("isPicsDisabled", "0");
         for (let n = 0; n<pictures.length; n++){
             pictures[n].style.display = picturesCopy[n].originalDisplay;
-            pictures[n].style.filter = picturesCopy[n].originalFilter;
         }
         for (let n = 0; n < divWithBackground.length; n++){
             divWithBackground[n].style.background = divWithBackgroundCopy[n].originalBackground;
