@@ -281,6 +281,7 @@ header, section, #new-catalog{
     background-color: transparent;
     border: none;
     transition: all 0.3s;
+    background-size: 21px;
 }
 
 #header-top-search-field:focus-visible + #header-top-search-button{
